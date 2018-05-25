@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>change_page</title>
+
+    <script>
+       /* function showProduct(str)
+        {
+            if (str.length==0)
+            {
+                document.getElementById("txtHint").innerHTML="";
+                return;
+            }
+
+            page = 1;
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+                }
+            }
+            xmlhttp.open("GET", "database.php?p=" + page, true);
+            xmlhttp.send();
+
+            if (window.XMLHttpRequest)
+            {// IE7+, Firefox, Chrome, Opera, Safari 浏览器执行
+                xmlhttp=new XMLHttpRequest();
+            }
+            else
+            {// IE6, IE5 浏览器执行
+                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange=function()
+            {
+                if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                {
+                    document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+                }
+            }
+            xmlhttp.open("GET","database.php?q="+str,true);
+            xmlhttp.send();
+
+        }*/
+
+        //function showPage(page){
+            page = 1;
+            xmlhttp = new XMLHttpRequest();
+            if (window.XMLHttpRequest)
+            {// IE7+, Firefox, Chrome, Opera, Safari 浏览器执行
+                 xmlhttp=new XMLHttpRequest();
+             }
+            else
+            {// IE6, IE5 浏览器执行
+                 xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+             }
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+                }
+            }
+            xmlhttp.open("GET", "database.php?p=" + page, true);
+            xmlhttp.send();
+       // }
+
+        function first() {
+            page = 1;
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+                }
+            }
+            xmlhttp.open("GET", "database.php?p=" + page, true);
+            xmlhttp.send();
+        }
+
+        function up() {
+            if (page > 0) {
+                page--;
+                xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+                    }
+                }
+                xmlhttp.open("GET", "database.php?p=" + page, true);
+                xmlhttp.send();
+            }
+        }
+
+        function down() {
+            if (page < 4) {
+                page++;
+                xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+                    }
+                }
+                xmlhttp.open("GET", "database.php?p=" + page, true);
+                xmlhttp.send();
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+
+<!--<form>
+    请输入您想要的商品：<br>
+    <input type="text" size="30" onkeyup="showProduct(this.value)">
+    <div id="txtHint"></div>
+</form>-->
+商品价格表：<br>
+<span id="txtHint"></span>
+<button type="button" onclick="first()">首页</button>
+<button type="button" onclick="up()">上一页</button>
+<button type="button" onclick="down()">下一页</button>
+
+</body>
+</html>
